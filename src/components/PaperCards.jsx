@@ -17,6 +17,7 @@ const PaperCards = (props) => {
 
   useEffect(() => {
     let number = page - 1;
+    console.log(number);
     if (notice) {
       newServices.getNewsType(notice, number).then((response) => {
         setNews(response.hits);
@@ -50,7 +51,7 @@ const PaperCards = (props) => {
   return (
     <>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <NewSelect notice={notice} setNotice={setNotice} />
+        <NewSelect notice={notice} setNotice={setNotice} setPage={setPage} />
       </Box>
       <Grid
         container
@@ -82,7 +83,12 @@ const PaperCards = (props) => {
           alignItems: "center",
         }}
       >
-        <Pagination size="small" count={count} onChange={handleChange} />
+        <Pagination
+          page={page}
+          size="small"
+          count={count}
+          onChange={handleChange}
+        />
       </Stack>
     </>
   );

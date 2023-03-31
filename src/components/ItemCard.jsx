@@ -8,10 +8,18 @@ import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import moment from "moment";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import { Link } from "react-router-dom";
 
 const ItemCard = (props) => {
   const { note, addFavorites, favorites, deleteFavorites } = props;
+
+  const styles = {
+    cardcontent: {
+      padding: "8px 16px 8px 16px",
+      "&:last-child": {
+        paddingBottom: 0,
+      },
+    },
+  };
 
   return (
     <Card
@@ -37,9 +45,13 @@ const ItemCard = (props) => {
         <a
           href={note.url}
           target="_blank"
-          style={{ textDecoration: "none", outline: "none !important" }}
+          style={{
+            textDecoration: "none",
+            outline: "none !important",
+            overflow: "auto",
+          }}
         >
-          <CardContent sx={{ padding: "8px 16px 8px 16px" }}>
+          <CardContent style={styles.cardcontent}>
             <Typography
               component={"p"}
               variant="body2"
@@ -67,6 +79,7 @@ const ItemCard = (props) => {
             display: "flex",
             alignItems: "center",
             backgroundColor: "#f2f7f5",
+            height: "100%",
           }}
         >
           {favorites.filter((item) => item.objectID === note.objectID).length >

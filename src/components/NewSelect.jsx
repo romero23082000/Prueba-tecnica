@@ -12,10 +12,11 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const NewSelect = (props) => {
-  const { notice, setNotice } = props;
+  const { notice, setNotice, setPage } = props;
   const handleChange = (event) => {
     setNotice(event.target.value);
     localStorage.setItem("filter", event.target.value);
+    setPage(1);
   };
   console.log(notice);
   return (
